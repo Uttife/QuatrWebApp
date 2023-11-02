@@ -84,11 +84,12 @@ form.addEventListener("submit", async (e) => { // Make the event listener asynch
         modal.style.display = "block";
 
         console.log("Document written with id: ", docRef.id);
-        console.log("Image uploaded with download URLs: ", imageUrls);
-        //alert("Property uploaded successfully");
+        console.log("Image uploaded with download URLs: ", _imageUrls);
 
     } catch (error) {
         console.error("Omo Error o: ", error);
+        alert("Property upload unsuccessful");
+
     }
 });
 
