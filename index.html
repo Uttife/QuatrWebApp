@@ -16,18 +16,25 @@
 
             <label for="address">Address:</label>
             <input type="text" id="address" name="address" required><br><br>
-            <input type="file" id="image" name="image" accept="image/*" multiple><br><br>
+            <input type="file" id="image" name="image" accept="image/*" multiple>
+            <p class="image-upload-message">Please upload at least three different pictures.</p><br><br>
             <button type="submit" class="submit-button">Submit Property</button>
         </form>
     </div>
 
-    <div class="overlay" id="overlay">
-        <!-- Progress bar container -->
-        <div class="progress-bar-container">
-            <div class="progress-bar" id="progress"></div>
-        </div>
+    <!-- Circular Progress Bar Container -->
+    <div class="circular-progress-container" id="circularProgressContainer">
+        <div class="circular-progress" id="circularProgress"></div>
     </div>
 
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <p>Property uploaded successfully</p>
+            <button id="closeModal">OK</button>
+        </div>
+    </div>
+    
     <script type="module" src="main.js"></script>
 
 </body>
