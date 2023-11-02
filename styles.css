@@ -1,0 +1,47 @@
+/* Apply a black and white theme with green action elements */
+.green-theme {
+    background-color: #fff; /* White background color */
+    color: #000; /* Black text color */
+    padding: 20px; /* Add padding to the form */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+/* Style the submit button with green action elements */
+.submit-button {
+    background-color: #27ae60; /* Green background for the button */
+    color: #fff; /* White text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #219d53; /* Darker green on hover */
+}
+
+/* Style input fields with green borders */
+input[type="text"],
+input[type="number"],
+input[type="file"] {
+    background-color: #fff; /* White input background */
+    color: #000; /* Black text color */
+    padding: 8px;
+    border: 2px solid #27ae60; /* Green border for input fields */
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Style labels in black and white */
+label {
+    color: #000; /* Black label text color */
+}
+
+/* Apply padding to the form elements */
+form label,
+form input,
+form button {
+    display: block;
+    margin: 10px 0;
+}
