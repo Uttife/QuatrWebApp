@@ -41,30 +41,30 @@ form.addEventListener("submit", async (e) => { // Make the event listener asynch
             description: _description,
             rent: _rent,
             address: _address,
-            imageUrl: [], // Initialize imageUrl as an empty string
+            imageUrls: [], // Initialize imageUrl as an empty string
         });
 
         // Come upload the images to Firebase Storage
-        const imageUrls = [];
+        const _imageUrls = [];
         for (const _image of _images){
             const storageRef = ref(storage, `property_images/${_image.name}`);
     
             const snapshot = await uploadBytes(storageRef, _image);
               // You go come collet download URL of the first uploaded image
         const imageUrl = await getDownloadURL(storageRef);
-        imageUrls.push(imageUrl);
+        _imageUrls.push(imageUrl);
 
         }
 
       
         //then you go come  Update the Firestore document with the imageUrl
         await updateDoc(docRef, {
-            imageUrl: imageUrl,
+            imageUrls: _imageUrls,
         });
 
         // Hide the overlay when the process is complete
         overlay.style.display = "none";
-        
+
         // Display success messages
         alert("Document written with id: " + docRef.id);
         alert("Image(s) uploaded successfully");
