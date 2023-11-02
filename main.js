@@ -26,10 +26,14 @@ const form = document.getElementById("propertyForm");
 
 form.addEventListener("submit", async (e) => { // Make the event listener asynchronous
     e.preventDefault();
+
+    // Show the overlay
+    overlay.style.display = "flex";
+
     const _description = form.description.value;
     const _rent = form.rent.value;
     const _address = form.address.value;
-    const _image = form.image.files[0]; // Assuming single image upload
+    const _images = form.image.files; // Assuming single image upload
 
     try {
         // Ypu go do  Firebase Firestore data upload for here
@@ -37,27 +41,36 @@ form.addEventListener("submit", async (e) => { // Make the event listener asynch
             description: _description,
             rent: _rent,
             address: _address,
-            imageUrl: "", // Initialize imageUrl as an empty string
+            imageUrl: [], // Initialize imageUrl as an empty string
         });
 
-        // Come upload the image to Firebase Storage
-        const storageRef = ref(storage, `property_images/${_image.name}`);
-        const snapshot = await uploadBytes(storageRef, _image);
-
-        // You go come collet download URL of the uploaded image
+        // Come upload the images to Firebase Storage
+        const imageUrls = [];
+        for (const _image of _images){
+            const storageRef = ref(storage, `property_images/${_image.name}`);
+    
+            const snapshot = await uploadBytes(storageRef, _image);
+              // You go come collet download URL of the first uploaded image
         const imageUrl = await getDownloadURL(storageRef);
+        imageUrls.push(imageUrl);
 
+        }
+
+      
         //then you go come  Update the Firestore document with the imageUrl
         await updateDoc(docRef, {
             imageUrl: imageUrl,
         });
 
+        // Hide the overlay when the process is complete
+        overlay.style.display = "none";
+        
         // Display success messages
         alert("Document written with id: " + docRef.id);
-        alert("Image uploaded with download URL: " + imageUrl);
+        alert("Image(s) uploaded successfully");
 
         console.log("Document written with id: ", docRef.id);
-        console.log("Image uploaded with download URL: ", imageUrl);
+        console.log("Image uploaded with download URLs: ", imageUrls);
     } catch (error) {
         console.error("Omo Error o: ", error);
     }
