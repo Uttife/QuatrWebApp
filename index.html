@@ -1,12 +1,12 @@
 
 <html>
 <head>
-    <title>Property Submission Form</title>
+    <title>Property Upload Form</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Property Submission Form</h1>
+        <h1>Quatr: Property Upload Form</h1>
         <form id="propertyForm" class="green-theme">
             <label for="description">Description:</label>
             <input type="text" id="description" name="description" required><br><br>
@@ -21,6 +21,13 @@
 
             <button type="submit" class="submit-button">Submit Property</button>
         </form>
+    </div>
+
+    <div class="overlay" id="overlay">
+        <!-- Progress bar container -->
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress"></div>
+        </div>
     </div>
 
     <script type="module" src="main.js"></script>
