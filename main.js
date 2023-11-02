@@ -28,7 +28,7 @@ form.addEventListener("submit", async (e) => { // Make the event listener asynch
     e.preventDefault();
 
     // Show the overlay
-    overlay.style.display = "flex";
+    circularProgressContainer.style.display = "flex";
 
     const _description = form.description.value;
     const _rent = form.rent.value;
@@ -63,7 +63,7 @@ form.addEventListener("submit", async (e) => { // Make the event listener asynch
         });
 
         // Hide the overlay when the process is complete
-        overlay.style.display = "none";
+        circularProgressContainer.style.display = "none";
 
         // Display success messages
         alert("Document written with id: " + docRef.id);
