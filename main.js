@@ -33,6 +33,7 @@ form.addEventListener("submit", async (e) => { // Make the event listener asynch
     const _description = form.description.value;
     const _rent = form.rent.value;
     const _address = form.address.value;
+    const _areaName = form.areaName.value;
     const _images = form.image.files; // Assuming single image upload
 
     try {
@@ -46,6 +47,7 @@ form.addEventListener("submit", async (e) => { // Make the event listener asynch
             description: _description,
             rent: _rent,
             address: _address,
+            areaName: _areaName,
             imageUrls: [], // Initialize imageUrl as an empty string
         });
 
